@@ -1,0 +1,19 @@
+ 
+#--------------------COST  function------------------------
+def myobj(p1):
+    F=[]
+    gnb = GaussianNB()
+    for i in range (len(p1)):
+         
+        x=p1.loc[i]
+        gnb.set_params(var_smoothing=x[0]) 
+        
+        gnb.fit(X_train, y_train)  #return the prediction value  =trainig model using Dtraining
+        y_pred =  gnb.predict(X_test)
+        
+        f=mean_squared_error(y_pred,y_test)  #Cost function Mean Squared= testing model using Dtesting =Mean squared
+        
+        F.append(f)
+        
+    return F
+#--------------------COST  function------------------------

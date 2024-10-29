@@ -1,0 +1,22 @@
+
+#--------------------COST  function------------------------
+def myobj(p1):
+    F=[]
+    RF =RandomForestClassifier()
+    for i in range (len(p1)):
+         
+        x=p1.loc[i]
+
+        n_Est= int(round(x[0]))
+        maxDepth=int(round(x[1]))
+        RF.set_params(n_estimators=n_Est,max_depth=maxDepth) 
+        
+        RF.fit(X_train, y_train)  #return the prediction value  =trainig model using Dtraining
+        y_pred =  RF.predict(X_test)
+        
+        f=mean_squared_error(y_pred,y_test)  #Cost function Mean Squared= testing model using Dtesting =Mean squared
+        
+        F.append(f)
+        
+    return F
+#--------------------COST  function------------------------
